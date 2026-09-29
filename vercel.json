@@ -1,31 +1,32 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "backend/main.py",
-      "use": "@vercel/python"
+  "services": {
+    "frontend": {
+      "root": "frontend/",
+      "framework": "vite"
     },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "frontend/dist",
-        "buildCommand": "cd frontend && npm run build"
-      }
+    "backend": {
+      "root": "backend/",
+      "entrypoint": "main:app"
     }
-  ],
-  "routes": [
+  },
+  "rewrites": [
     {
-      "src": "/analyze",
-      "dest": "backend/main.py"
+      "source": "/analyze",
+      "destination": {
+        "service": "backend"
+      }
     },
     {
-      "src": "/health",
-      "dest": "backend/main.py"
+      "source": "/health",
+      "destination": {
+        "service": "backend"
+      }
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
     }
   ]
 }
