@@ -19,7 +19,7 @@ import {
 
 import "./styles.css";
 
-const API_URL = "https://deja-fix-git-main-kajanamalleshwari-9503.vercel.app";
+const API_URL = "https://deja-fix.vercel.app";
 
 const DEMO_INCIDENT =
   "Payment API is experiencing database connection timeouts during peak traffic.";
